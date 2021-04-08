@@ -3,10 +3,13 @@ const express = require('express');
 const morgan = require('morgan');
 var exphbs  = require('express-handlebars');
 const app = express();
+const route = require('./routes')
 
 const port = 3000;
-
-
+// parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: false }));
+// parse application/json
+app.use(express.json());
 
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -17,10 +20,8 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs');
 
 app.set('views', path.join(__dirname, 'resources/views'));
-app.get('/', function (req, res) {
-  res.render('news');
-});
-
+// route init
+route(app); 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 })
