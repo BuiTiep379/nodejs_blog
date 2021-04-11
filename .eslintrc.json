@@ -4,8 +4,8 @@
         "es2021": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
+        "standard",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -14,9 +14,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
+    
     "rules": {
     }
 }
