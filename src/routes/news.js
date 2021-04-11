@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// lấy controller 
+// lấy controller
 const newsController = require('../app/controllers/NewsController');
 
 router.use('/:slug', newsController.show);

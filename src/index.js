@@ -1,9 +1,9 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-var exphbs  = require('express-handlebars');
+var exphbs = require('express-handlebars');
 const app = express();
-const route = require('./routes')
+const route = require('./routes');
 
 const port = 3000;
 // parse application/x-www-form-urlencoded
@@ -13,15 +13,18 @@ app.use(express.json());
 
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, 'public')));
-// themplate engine 
-app.engine('hbs', exphbs({
-  extname: '.hbs'
-}));
+// themplate engine
+app.engine(
+    'hbs',
+    exphbs({
+        extname: '.hbs',
+    }),
+);
 app.set('view engine', 'hbs');
 
 app.set('views', path.join(__dirname, 'resources/views'));
 // route init
-route(app); 
+route(app);
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-})
+    console.log(`Example app listening at http://localhost:${port}`);
+});
